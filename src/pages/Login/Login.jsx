@@ -29,11 +29,11 @@ const LoginPage = () => {
             <Lottie animationData={animationData}></Lottie>
         </ImageContainer>
         <LoginForm>
-            <h2>Login</h2>
+            <LoginTitle>Login</LoginTitle>
             <Form>
             <FormGroup>
-                <InputLabel>Username</InputLabel>
-                <InputField type="text" id="username" placeholder="Enter your user"/>
+                <InputLabel>Login ID</InputLabel>
+                <InputField type="text" id="username" placeholder="Enter login ID"/>
             </FormGroup>
             <FormGroup>
                 <InputLabel>Password</InputLabel>
@@ -61,7 +61,7 @@ const LoginPage = () => {
               Remember Me
             </CheckboxLabel>
           </FormGroup>
-          <ForgotPasswordLink href="#">Forgot Password?</ForgotPasswordLink>
+          <ForgotPasswordLink href="#">Change Password?</ForgotPasswordLink>
 
           </ForgetInline>
 
@@ -96,6 +96,13 @@ const Container = styled.div`
   }
 `;
 
+const LoginTitle = styled.h2`
+  font-size: 40px;
+  @media (max-width: 768px) {
+    margin-top: 10px;
+    font: 20px;
+  }
+`
 const ImageContainer = styled.div`
   flex: 1;
   display: flex;
@@ -153,6 +160,7 @@ const InputLabel = styled.label`
   display: block;
   margin-bottom: 5px;
   color: #333;
+  font-weight: bold;
 `;
 
 const InputField = styled.input`
