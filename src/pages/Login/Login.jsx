@@ -44,11 +44,12 @@ const LoginPage = () => {
                     placeholder="Enter your password"
                 />
                 <ShowPasswordIcon onClick={togglePasswordVisibility}>
-                    {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
+                    {showPassword ? <RiEyeCloseLine /> : ""}
                 </ShowPasswordIcon>
                 </PasswordInputContainer>
-                <ForgotPasswordLink href="#">Forgot Password?</ForgotPasswordLink>
             </FormGroup>
+
+            <ForgetInline>
             <FormGroup>
             <CheckboxLabel>
               <RememberMeCheckbox
@@ -60,6 +61,10 @@ const LoginPage = () => {
               Remember Me
             </CheckboxLabel>
           </FormGroup>
+          <ForgotPasswordLink href="#">Forgot Password?</ForgotPasswordLink>
+
+          </ForgetInline>
+
           <FormGroup>
             <CheckboxLabel>
               <AgreeTermsCheckbox
@@ -84,7 +89,8 @@ const LoginPage = () => {
 const Container = styled.div`
   display: flex;
   height: 100vh;
-  
+  justify-content: center;
+  align-items: center;
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -108,10 +114,15 @@ const LoginForm = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 400px;
   padding: 20px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   @media (max-width: 768px) {
     flex: 0;
     padding: 40px 20px;
+    height: full;
+    width: 100%;
+    box-shadow: none;
   }
 `;
 
@@ -122,6 +133,12 @@ const Form = styled.form`
 
 const FormGroup = styled.div`
   margin-bottom: 20px;
+`;
+const ForgetInline = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: -15px;
 `;
 
 const InputLabel = styled.label`
@@ -151,7 +168,7 @@ const ShowPasswordIcon = styled.span`
   transform: translateY(-50%);
   cursor: pointer;
   color: #666;
-  pointer-events: none; /* Disable pointer events to prevent typing in the icon area */
+  pointer-events: none;
 `;
 
 const ForgotPasswordLink = styled.a`
@@ -159,12 +176,14 @@ const ForgotPasswordLink = styled.a`
   text-decoration: none;
   font-size: 14px;
   display: block;
-  margin-top: 5px;
+  color: orange;
+  margin-top: -40px;
+  margin-right: 10px;
 `;
 
 
 const SubmitButton = styled.button`
-  width: 100%;
+  width: 70%;
   padding: 10px;
   background-color: #3498db;
   color: #fff;
@@ -172,9 +191,13 @@ const SubmitButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  margin-left: 15%;
   &:hover {
     background-color: #2980b9;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-left: 0;
   }
 `;
 const CheckboxLabel = styled.label`
