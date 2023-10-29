@@ -106,6 +106,9 @@ const ImageContainer = styled.div`
     height: 40vh;
     padding-top: 50px;
   }
+  @media only screen and (min-width: 768px) and (max-width: 1080px){
+    flex-direction: column;
+   }
 `;
 
 const LoginForm = styled.div`
@@ -115,15 +118,20 @@ const LoginForm = styled.div`
   justify-content: center;
   align-items: center;
   height: 400px;
-  padding: 20px;
+  padding: 40px 20px;
+  margin-right: 100px;
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   @media (max-width: 768px) {
     flex: 0;
-    padding: 40px 20px;
     height: full;
+    margin-right: 0;
+    padding: 40px 20px;
     width: 100%;
     box-shadow: none;
   }
+  @media only screen and (min-width: 820px) and (max-width: 1080px){
+    margin-right: 50px;
+   }
 `;
 
 const Form = styled.form`
