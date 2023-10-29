@@ -7,7 +7,16 @@ import animationData from "../../../public/login.json"
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
+  const handleRememberMe = () => {
+    setRememberMe(!rememberMe);
+  };
+
+  const handleAgreeTerms = () => {
+    setAgreeTerms(!agreeTerms);
+  };
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
   };
@@ -24,7 +33,7 @@ const LoginPage = () => {
             <Form>
             <FormGroup>
                 <InputLabel>Username</InputLabel>
-                <InputField type="text" id="username" />
+                <InputField type="text" id="username" placeholder="Enter your user"/>
             </FormGroup>
             <FormGroup>
                 <InputLabel>Password</InputLabel>
@@ -32,6 +41,7 @@ const LoginPage = () => {
                 <PasswordInput
                     type={showPassword ? 'text' : 'password'}
                     id="password"
+                    placeholder="Enter your password"
                 />
                 <ShowPasswordIcon onClick={togglePasswordVisibility}>
                     {showPassword ? <RiEyeCloseLine /> : <RiEyeLine />}
@@ -39,23 +49,42 @@ const LoginPage = () => {
                 </PasswordInputContainer>
                 <ForgotPasswordLink href="#">Forgot Password?</ForgotPasswordLink>
             </FormGroup>
+            <FormGroup>
+            <CheckboxLabel>
+              <RememberMeCheckbox
+                type="checkbox"
+                id="rememberMe"
+                checked={rememberMe}
+                onChange={handleRememberMe}
+              />
+              Remember Me
+            </CheckboxLabel>
+          </FormGroup>
+          <FormGroup>
+            <CheckboxLabel>
+              <AgreeTermsCheckbox
+                type="checkbox"
+                id="agreeTerms"
+                checked={agreeTerms}
+                onChange={handleAgreeTerms}
+              />
+              <TermsLink href="#">I agree to the <OrangeLink>Terms and Conditions</OrangeLink></TermsLink>
+            </CheckboxLabel>
+          </FormGroup>
             <SubmitButton type="submit">Login</SubmitButton>
+                <RegisterLink href="#">Don't have an account? <OrangeLink>Register Here</OrangeLink></RegisterLink>
             </Form>
         </LoginForm>
         </Container>
     </div>
   );
 };
-const Title = styled.h1`
-  margin-bottom: 20px;
-  
-`;
+
 
 const Container = styled.div`
   display: flex;
   height: 100vh;
-  background: linear-gradient(to right, #3494e6, #ec6ead);
-  /* Modify the background to your preference */
+  
   @media (max-width: 768px) {
     flex-direction: column;
   }
@@ -88,7 +117,7 @@ const LoginForm = styled.div`
 
 const Form = styled.form`
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
 `;
 
 const FormGroup = styled.div`
@@ -133,6 +162,7 @@ const ForgotPasswordLink = styled.a`
   margin-top: 5px;
 `;
 
+
 const SubmitButton = styled.button`
   width: 100%;
   padding: 10px;
@@ -147,5 +177,34 @@ const SubmitButton = styled.button`
     background-color: #2980b9;
   }
 `;
+const CheckboxLabel = styled.label`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+`;
 
+const RememberMeCheckbox = styled.input`
+  margin-right: 5px;
+`;
+
+const AgreeTermsCheckbox = styled.input`
+  margin-right: 5px;
+`;
+const OrangeLink = styled.span`
+  color: orange;
+  text-decoration: none;
+`;
+
+const TermsLink = styled.a`
+  color: #666;
+  text-decoration: none;
+`;
+
+const RegisterLink = styled.a`
+  color: #666;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+  display: block;
+`;
 export default LoginPage;
